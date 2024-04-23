@@ -46,7 +46,11 @@ def select_data(json_fpath):
         "his_rank",
     ]
     _df = pd.DataFrame(columns=key)
-    _week = pd.read_json(json_fpath)
+    try:
+        _week = pd.read_json(json_fpath)
+    except Exception as e:
+        print(f"Error reading JSON file: {json_fpath} - {e}")
+        return pd.DataFrame()
 
     # 获取每个必看视频基础的信息
     _base_info = pd.DataFrame(_week["data"]["list"])

@@ -29,11 +29,11 @@ if __name__ == "__main__":
     # 官方api
     url = "https://api.bilibili.com/x/web-interface/popular/series/one?number={}"
     # 爬虫数据存储路径
-    data_folder = "./lab/data"
+    data_folder = "./data"
     os.makedirs(data_folder, exist_ok=True)
     # 开始爬虫
     for i in range(165, 265):
         URL = url.format(str(i))
         # 每周数据存储路径
-        json_fpath = os.path.join(data_folder, "week_{}.json".format(str(i)))
+        json_fpath = os.path.join(data_folder, "week_{}.json".format(str(i - 164)))
         getWeek_json(URL, json_fpath)
